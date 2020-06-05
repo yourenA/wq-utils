@@ -3,10 +3,7 @@
 <head>
     <meta charset=" utf-8">
     <meta name="author" content="http://www.softwhy.com/" />
-    <title>蚂蚁部落</title>
-    <script src="https://cdn.bootcdn.net/ajax/libs/print-js/1.0.63/print.min.js"></script>
-    <link href="https://cdn.bootcdn.net/ajax/libs/print-js/1.0.63/print.min.css" rel="stylesheet">
-    <script src="./js/lib/print.js"></script>
+    <title>万泉打印</title>
     <style type="text/css">
         *{
             padding: 0;
@@ -29,6 +26,9 @@
             border: 1px solid #000000; /* 行、列名称边框 */
             padding: 4px 8px;
             height: 34px;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
         }
         .table-top{
             display: flex;
@@ -50,57 +50,58 @@
             margin: 10px;
         }
         #print-box{
-            width: 1050px;
+            width:1000px;
+            margin: 0 auto;
             font-size: 14px;
         }
         .time,.operater,.shouyin{
             width: 33%;
-            margin-top: 15px;
+            margin-top: 10px;
         }
     </style>
+    <script src="../../../wq-utils/server-config.js"></script>
 </head>
 <body>
-12332
 <div id="print-box">
     <h3>吐鲁番万泉水务有限公司用户缴费回单</h3>
     <div class="table-top">
-        <p class="address">地址:</p>
-        <p class="number">回单编号:</p>
+        <p class="address" id="dz">地址:巴格日路-巴格日村-巴格日村--阿力木·吐尔逊（商业）</p>
+        <p class="number" id="hdbh">回单编号:2020115022933210</p>
         <p class="gaizhang">盖章有效</p>
     </div>
     <table class="datalist" summary="财政报表">
         <tbody>
         <tr>
             <td style="width: 120px">用户编号</td>
-            <td colspan="2"></td>
+            <td colspan="2" id="yhbh">61011909290001</td>
             <td style="width: 120px">用户姓名</td>
-            <td  colspan="2"></td>
+            <td  colspan="2" id="yhxm">买买提.买买提.买买提.买买提买买提买买提买买提</td>
             <td style="width: 150px">用户电话</td>
-            <td  colspan="2"></td>
+            <td  colspan="2" id="yhdh">13265958173</td>
         </tr>
         <tr>
             <td>表计编号</td>
-            <td  colspan="2"></td>
+            <td  colspan="2" id="bjbh">61011909290001</td>
             <td >水价类型</td>
-            <td  colspan="2"></td>
+            <td  colspan="2" id="sjlx">类型一</td>
             <td >结算日期</td>
-            <td  colspan="2"></td>
+            <td  colspan="2"  id="jsrq">2010-12-05</td>
         </tr>
         <tr>
             <td>上期读数</td>
-            <td  colspan="2"></td>
+            <td  colspan="2"  id="sqds">12.36</td>
             <td >本期读数</td>
-            <td  colspan="2"></td>
+            <td  colspan="2"  id="bqds">15.36</td>
             <td >结算水量(m3)</td>
-            <td  colspan="2"></td>
+            <td  colspan="2"  id="jssl">3</td>
         </tr>
         <tr>
             <td>上期余额</td>
-            <td  colspan="2"></td>
+            <td  colspan="2"  id="sqye">￥12455.56</td>
             <td >本期余额</td>
-            <td  colspan="2"></td>
+            <td  colspan="2"  id="bqye">￥512.96</td>
             <td >收款方式</td>
-            <td  colspan="2"></td>
+            <td  colspan="2"  id="skfs"></td>
         </tr>
         <tr>
             <td colspan="2">费用名称</td>
@@ -112,7 +113,7 @@
             <td >金额</td>
             <td >说明</td>
         </tr>
-        <tr>
+        <tr >
             <td colspan="2"></td>
             <td ></td>
             <td ></td>
@@ -132,33 +133,123 @@
             <td ></td>
             <td ></td>
         </tr>
-        <tr>
+        <tr >
             <td colspan="2">合计人民币(大写)</td>
-            <td  colspan="5"></td>
-            <td colspan="2">￥:</td>
+            <td  colspan="5" id="hjrmb"></td>
+            <td colspan="2" id="hjrmb2">￥:1235.45</td>
         </tr>
     </table>
     <div class="table-top">
-        <p class="time">打印时间:</p>
-        <p class="operater">操作员:</p>
-        <p class="shouyin">收银员:</p>
+        <p class="time" id="dyrq">打印时间:</p>
+        <p class="operater" id="czy">操作员:</p>
+        <p class="shouyin" id="syy">收银员:</p>
     </div>
 </div>
-<button type="button" id="print"  class="no-print">
-    打印
-</button>
 <script>
-    let button = document.querySelector('#print');
-    button.onclick=function () {
-        console.log('click')
-        console.log('print', print)
-        // printJS({ printable: 'print-box', type: 'html', targetStyles: ['*'],
-        //     style: 'td { text-align: center; }'
-        // })
-        print('#print-box',{
-            noPrint:'.no-print'
-        });
+    //获取地址栏参数，name:参数名称
+    function getUrlParms(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  decodeURIComponent(r[2]); return '';
     }
- </script>
+    function convertCurrency(money) {
+        //汉字的数字
+        var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
+        //基本单位
+        var cnIntRadice = new Array('', '拾', '佰', '仟');
+        //对应整数部分扩展单位
+        var cnIntUnits = new Array('', '万', '亿', '兆');
+        //对应小数部分单位
+        var cnDecUnits = new Array('角', '分', '毫', '厘');
+        //整数金额时后面跟的字符
+        var cnInteger = '整';
+        //整型完以后的单位
+        var cnIntLast = '元';
+        //最大处理的数字
+        var maxNum = 999999999999999.9999;
+        //金额整数部分
+        var integerNum;
+        //金额小数部分
+        var decimalNum;
+        //输出的中文金额字符串
+        var chineseStr = '';
+        //分离金额后用的数组，预定义
+        var parts;
+        if (money == '') { return ''; }
+        money = parseFloat(money);
+        if (money >= maxNum) {
+            //超出最大处理数字
+            return '';
+        }
+        if (money == 0) {
+            chineseStr = cnNums[0] + cnIntLast + cnInteger;
+            return chineseStr;
+        }
+        //转换为字符串
+        money = money.toString();
+        if (money.indexOf('.') == -1) {
+            integerNum = money;
+            decimalNum = '';
+        } else {
+            parts = money.split('.');
+            integerNum = parts[0];
+            decimalNum = parts[1].substr(0, 4);
+        }
+        //获取整型部分转换
+        if (parseInt(integerNum, 10) > 0) {
+            var zeroCount = 0;
+            var IntLen = integerNum.length;
+            for (var i = 0; i < IntLen; i++) {
+                var n = integerNum.substr(i, 1);
+                var p = IntLen - i - 1;
+                var q = p / 4;
+                var m = p % 4;
+                if (n == '0') {
+                    zeroCount++;
+                } else {
+                    if (zeroCount > 0) {
+                        chineseStr += cnNums[0];
+                    }
+                    //归零
+                    zeroCount = 0;
+                    chineseStr += cnNums[parseInt(n)] + cnIntRadice[m];
+                }
+                if (m == 0 && zeroCount < 4) {
+                    chineseStr += cnIntUnits[q];
+                }
+            }
+            chineseStr += cnIntLast;
+        }
+        //小数部分
+        if (decimalNum != '') {
+            var decLen = decimalNum.length;
+            for (var i = 0; i < decLen; i++) {
+                var n = decimalNum.substr(i, 1);
+                if (n != '0') {
+                    chineseStr += cnNums[Number(n)] + cnDecUnits[i];
+                }
+            }
+        }
+        if (chineseStr == '') {
+            chineseStr += cnNums[0] + cnIntLast + cnInteger;
+        } else if (decimalNum == '') {
+            chineseStr += cnInteger;
+        }
+        return chineseStr;
+    }
+</script>
+<script>
+    document.querySelector('#dz').innerHTML="地址:"+getUrlParms('dz');
+    document.querySelector('#hdbh').innerHTML="回单编号:"+getUrlParms('hdbh');
+    document.querySelector('#yhbh').innerHTML=getUrlParms('yhbh');
+    document.querySelector('#yhxm').innerHTML=getUrlParms('yhxm');
+    document.querySelector('#yhdh').innerHTML=getUrlParms('yhbh');
+    document.querySelector('#bjbh').innerHTML=getUrlParms('yhbh');
+    document.querySelector('#sjlx').innerHTML=getUrlParms('yhbh');
+    document.querySelector('#jsrq').innerHTML=getUrlParms('yhbh');
+    document.querySelector('#hjrmb').innerHTML=convertCurrency(getUrlParms('hjrmb'));
+
+    window.print();
+</script>
 </body>
 </html>
