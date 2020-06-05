@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>蚂蚁部落</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/print-js/1.0.63/print.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/print-js/1.0.63/print.min.css" rel="stylesheet">
+    <script src="./js/lib/print.js"></script>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .datalist {
+            table-layout:fixed;
+            width: 100%;
+            border: 1px solid #000000; /* 表格边框 */
+            font-family: Arial;
+            border-collapse: collapse; /* 边框重叠 */
+            font-weight: bold;
+        }
+        .datalist th {
+            width: 11.11%;
+            border: 1px solid #000000; /* 行、列名称边框 */
+        }
+        td ,th{
+            border: 1px solid #000000; /* 行、列名称边框 */
+            padding: 4px 8px;
+            height: 34px;
+        }
+        .table-top{
+            display: flex;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .address{
+            width: 60%;
+        }
+        .number{
+            width: 30%;
+        }
+        .gaizhang{
+            width: 10%;
+            text-align: right;
+        }
+        h3{
+            text-align: center;
+            margin: 10px;
+        }
+        #print-box{
+            width: 1050px;
+            font-size: 14px;
+        }
+        .time,.operater,.shouyin{
+            width: 33%;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+12332
+<div id="print-box">
+    <h3>吐鲁番万泉水务有限公司用户缴费回单</h3>
+    <div class="table-top">
+        <p class="address">地址:</p>
+        <p class="number">回单编号:</p>
+        <p class="gaizhang">盖章有效</p>
+    </div>
+    <table class="datalist" summary="财政报表">
+        <tbody>
+        <tr>
+            <td style="width: 120px">用户编号</td>
+            <td colspan="2"></td>
+            <td style="width: 120px">用户姓名</td>
+            <td  colspan="2"></td>
+            <td style="width: 150px">用户电话</td>
+            <td  colspan="2"></td>
+        </tr>
+        <tr>
+            <td>表计编号</td>
+            <td  colspan="2"></td>
+            <td >水价类型</td>
+            <td  colspan="2"></td>
+            <td >结算日期</td>
+            <td  colspan="2"></td>
+        </tr>
+        <tr>
+            <td>上期读数</td>
+            <td  colspan="2"></td>
+            <td >本期读数</td>
+            <td  colspan="2"></td>
+            <td >结算水量(m3)</td>
+            <td  colspan="2"></td>
+        </tr>
+        <tr>
+            <td>上期余额</td>
+            <td  colspan="2"></td>
+            <td >本期余额</td>
+            <td  colspan="2"></td>
+            <td >收款方式</td>
+            <td  colspan="2"></td>
+        </tr>
+        <tr>
+            <td colspan="2">费用名称</td>
+            <td >数量</td>
+            <td >天数</td>
+            <td >月数</td>
+            <td >收费月份</td>
+            <td >单价</td>
+            <td >金额</td>
+            <td >说明</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+        </tr>
+        <tr>
+            <td colspan="2">合计人民币(大写)</td>
+            <td  colspan="5"></td>
+            <td colspan="2">￥:</td>
+        </tr>
+    </table>
+    <div class="table-top">
+        <p class="time">打印时间:</p>
+        <p class="operater">操作员:</p>
+        <p class="shouyin">收银员:</p>
+    </div>
+</div>
+<button type="button" id="print"  class="no-print">
+    打印
+</button>
+<script>
+    let button = document.querySelector('#print');
+    button.onclick=function () {
+        console.log('click')
+        console.log('print', print)
+        // printJS({ printable: 'print-box', type: 'html', targetStyles: ['*'],
+        //     style: 'td { text-align: center; }'
+        // })
+        print('#print-box',{
+            noPrint:'.no-print'
+        });
+    }
+ </script>
+</body>
+</html>
