@@ -33,7 +33,11 @@
             overflow: hidden;
             white-space: nowrap;
         }
-
+  td[id], th[id],.qt{
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #666
+  }
         .table-top {
             display: flex;
             margin-bottom: 12px;
@@ -362,8 +366,8 @@
     }
 </script>
 <script>
-document.querySelector('#dz').innerHTML = "地址" + getUrlParms('dz');//地址
-document.querySelector('#hdbh').innerHTML = "回单编号" + getUrlParms('yhbh');//回单编号
+document.querySelector('#dz').innerHTML = "地址: " + getUrlParms('dz');//地址
+document.querySelector('#hdbh').innerHTML = "回单编号: " + getUrlParms('yhbh');//回单编号
 document.querySelector('#yhbh').innerHTML = getUrlParms('yhbh');//上期读数
 document.querySelector('#yhxm').innerHTML = getUrlParms('yhxm');//本期读数
 document.querySelector('#yhdh').innerHTML = getUrlParms('yhdh');//实际水量
