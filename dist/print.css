@@ -70,14 +70,14 @@ td, th {
 
 h3 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 34px;
     color: #000000;
     font-family: "SimHei";
 }
 
 #print-box {
-    width: 770px;
+    width: 695px;
     font-size: 16px;
     color: #000000;
 }
