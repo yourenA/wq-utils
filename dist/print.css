@@ -11,6 +11,7 @@
     border-collapse: collapse; /* 边框重叠 */
     color: #000000;
     font-family: "SimHei";
+    font-size: 14px;
 }
 
 .datalist th {
@@ -28,15 +29,16 @@ td, th {
 }
 
 .table-top {
-    display: flex;
     margin-bottom: 12px;
 
 }
 
 .table-top p {
+    display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 10px;
+    margin-right: 5px;
+    font-size: 14px;
 }
 
 .address {
@@ -61,7 +63,7 @@ h3 {
 }
 
 #print-box {
-    width: 1000px;
+    width: 650px;
     margin: 0 auto;
     font-size: 16px;
     color: #4f4f4f;
@@ -71,11 +73,18 @@ h3 {
     width: 33%;
     margin-top: 15px;
 }
-
 #yhmc, #yhbh, #jfrq, #sjh, #skr, #kpr {
-    width: 25%;
+    width: 24%;
 }
-
+#yhmc{
+    width: 20%;
+}
+#yhbh{
+    width: 30%;
+}
+#sjh{
+    width: 20%
+}
 #dysj {
-    width: 50%;
+    width: 40%;
 }
