@@ -56,14 +56,14 @@ td, th {
 
 h3 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: 34px;
     color: #3d3d3b;
     font-family: "SimHei";
 }
 
 #print-box {
-    width: 650px;
+    width: 635px;
     margin: 0 auto;
     font-size: 16px;
     color: #4f4f4f;
