@@ -129,8 +129,8 @@
             <td>本期余额</td>
             <td>价格</td>
             <td>价格阶梯</td>
-            <td>数量(立方米)</td>
-            <td colspan="2" id="sl"></td>
+            <td>用水量(立方米)</td>
+            <td colspan="2" id="ysl"></td>
 
         </tr>
         <tr>
@@ -139,7 +139,7 @@
             <td id="sqye"></td>
             <td id="bqye"></td>
             <td id="jg"></td>
-            <td id="jgjt">1</td>
+            <td id="jgjt"></td>
             <td>收款方式</td>
             <td id="skfs" colspan="2">预付</td>
         </tr>
@@ -335,9 +335,11 @@
   document.querySelector('#bqds').innerHTML = getUrlParms('bqds');//本期读数
   document.querySelector('#sqye').innerHTML = getUrlParms('sqye');//上期余额
   document.querySelector('#bqye').innerHTML = getUrlParms('bqye');//本期余额
-  document.querySelector('#jg').innerHTML = getUrlParms('jg');//价格
+  if(getUrlParms('jg')){
+    document.querySelector('#jg').innerHTML =  '￥ ' +getUrlParms('jg');//价格
+  }
   document.querySelector('#jgjt').innerHTML = getUrlParms('jgjt');//价格阶梯
-  document.querySelector('#sl').innerHTML = getUrlParms('sl');//数量(立方米)
+  document.querySelector('#ysl').innerHTML = getUrlParms('ysl');//用水量(立方米)
   document.querySelector('#skfs').innerHTML = getUrlParms('skfs');//收款方式
   document.querySelector('#hjrmb').innerHTML = convertCurrency(getUrlParms('hjrmb'));//合计人民币
 
