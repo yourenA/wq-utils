@@ -4,114 +4,36 @@
     <meta charset=" utf-8">
     <meta name="author" content="http://www.softwhy.com/"/>
     <title>万泉打印</title>
-    <style type="text/css">
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        .datalist {
-            table-layout: fixed;
-            width: 100%;
-            border: 1px solid #000000; /* 表格边框 */
-            border-collapse: collapse; /* 边框重叠 */
-            font-weight: bold;
-            color: #4f4f4f;
-        }
-
-        .datalist th {
-            width: 11.11%;
-            border: 1px solid #000000; /* 行、列名称边框 */
-        }
-
-        td, th {
-            border: 1px solid #464646; /* 行、列名称边框 */
-            padding: 9px 2px;
-            height: 40px;
-            text-align: center;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        td[id], th[id], .qt {
-            font-size: 14px;
-            font-family: sans-serif;
-            color: #666
-        }
-
-        .table-top {
-            display: flex;
-            margin-bottom: 12px;
-            font-weight: bold;
-
-        }
-
-        .table-top p {
-            white-space: nowrap;
-            overflow: hidden;
-            margin-right: 10px;
-        }
-
-        .address {
-            width: 60%;
-        }
-
-        .number {
-            width: 30%;
-        }
-
-        .gaizhang {
-            width: 10%;
-            text-align: right;
-        }
-
-        h3 {
-            text-align: center;
-            margin: 10px;
-            margin-bottom: 20px;
-            font-size: 34px;
-            font-weight: normal;
-            color: #3d3d3b;
-        }
-
-        #print-box {
-            width: 1050px;
-            margin: 0 auto;
-            font-size: 16px;
-            color: #4f4f4f;
-        }
-
-        .time, .operater, .shouyin {
-            width: 33%;
-            margin-top: 15px;
-        }
-
-        #yhmc, #yhbh, #jfrq, #sjh, #skr, #kpr {
-            width: 25%;
-        }
-
-        #dysj {
-            width: 50%;
-        }
-    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="http://www.jq22.com/demo/dayin/jquery.jqprint-0.3.js"></script>
+    <link rel="stylesheet" href="./print.css" >
+    <link rel="stylesheet" href="./print.css" type="text/css" media="print">
 </head>
 <body>
 <div id="print-box">
     <h3>吐鲁番万泉水务有限公司用户缴费回单</h3>
-    <div class="table-top">
-        <p class="address" id="dz">地址:巴格日路-巴格日村-巴格日村&#45;&#45;阿力木·吐尔逊（商业）</p>
-        <p class="number" id="hdbh">回单编号:2020115022933210</p>
-        <p class="gaizhang">盖章有效</p>
-    </div>
+    <table  class="tap-table">
+        <tbody>
+        <tr>
+            <td  id="dz"></td>
+            <td  id="hdbh"></td>
+            <td  id="jfrq" class="gaizhang">盖章有效</td>
+        </tr>
+        </tbody>
+    </table>
+<!--    <div class="table-top">-->
+<!--        <p class="address" id="dz">地址:巴格日路-巴格日村-巴格日村&#45;&#45;阿力木·吐尔逊（商业）</p>-->
+<!--        <p class="number" id="hdbh">回单编号:2020115022933210</p>-->
+<!--        <p class="gaizhang">盖章有效</p>-->
+<!--    </div>-->
     <table class="datalist" summary="财政报表">
         <tbody>
         <tr>
-            <td style="width: 120px">用户编号</td>
+            <td style="width:  70px">用户编号</td>
             <td colspan="2" id="yhbh">61011909290001</td>
-            <td style="width: 120px">用户姓名</td>
+            <td style="width:  70px">用户姓名</td>
             <td colspan="2" id="yhxm">买买提.买买提.买买提.买买提买买提买买提买买提</td>
-            <td style="width: 150px">用户电话</td>
+            <td style="width: 70px">用户电话</td>
             <td colspan="2" id="yhdh">13265958173</td>
         </tr>
         <tr>
@@ -129,7 +51,7 @@
             <td>本期余额</td>
             <td>价格</td>
             <td>价格阶梯</td>
-            <td>用水量(立方米)</td>
+            <td>用水量(m³)</td>
             <td colspan="2" id="ysl"></td>
 
         </tr>
@@ -189,11 +111,20 @@
             <td colspan="2" id="hjrmb2">￥:1235.45</td>
         </tr>
     </table>
-    <div class="table-top">
-        <p class="time" id="dysj">打印时间:</p>
-        <p class="operater" id="czy">操作员:</p>
-        <p class="shouyin" id="syy">收银员:</p>
-    </div>
+    <table  class="tap-table">
+        <tbody>
+        <tr>
+            <td  id="dysj"></td>
+            <td  id="czy"></td>
+            <td  id="syy"></td>
+        </tr>
+        </tbody>
+    </table>
+<!--    <div class="table-top">-->
+<!--        <p class="time" id="dysj">打印时间:</p>-->
+<!--        <p class="operater" id="czy">操作员:</p>-->
+<!--        <p class="shouyin" id="syy">收银员:</p>-->
+<!--    </div>-->
 </div>
 <script>
   function fixZero(value) {
@@ -336,7 +267,7 @@
   document.querySelector('#sqye').innerHTML = getUrlParms('sqye');//上期余额
   document.querySelector('#bqye').innerHTML = getUrlParms('bqye');//本期余额
   if(getUrlParms('jg')){
-    document.querySelector('#jg').innerHTML =  '￥ ' +getUrlParms('jg');//价格
+    document.querySelector('#jg').innerHTML =  '¥ ' +getUrlParms('jg');//价格
   }
   document.querySelector('#jgjt').innerHTML = getUrlParms('jgjt');//价格阶梯
   document.querySelector('#ysl').innerHTML = getUrlParms('ysl');//用水量(立方米)
@@ -344,7 +275,7 @@
   document.querySelector('#hjrmb').innerHTML = convertCurrency(getUrlParms('hjrmb'));//合计人民币
 
   if (getUrlParms('hjrmb')) {
-    document.querySelector('#hjrmb2').innerHTML = '￥ ' + getUrlParms('hjrmb');
+    document.querySelector('#hjrmb2').innerHTML = '¥ ' + getUrlParms('hjrmb');
   }
   document.querySelector('#dysj').innerHTML = '打印时间：' + GetDate(2);
   document.querySelector('#czy').innerHTML = '操作员：' + getUrlParms('czy');//操作员
@@ -387,7 +318,9 @@
       }
     }
   }
-  window.print();
+  $("#print-box").jqprint({
+      importCSS: true
+  });
 </script>
 </body>
 </html>

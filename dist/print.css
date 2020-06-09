@@ -21,7 +21,7 @@
 
 td, th {
     border: 1px solid #000000; /* 行、列名称边框 */
-    padding: 10px 2px;
+    padding: 8px 2px;
     height: 34px;
     text-align: center;
     overflow: hidden;
