@@ -12,12 +12,22 @@
 <body>
 <div id="print-box">
     <h3>吐鲁番万泉供排水公司水费收款收据</h3>
-    <div class="table-top">
-        <p id="yhmc">用户名称：吐鲁番恒久房地产开发有限公司</p>
-        <p id="yhbh">用户编号：04192145310</p>
-        <p id="jfrq">缴费日期：2018-12-05</p>
-        <p id="sjh">收据号：5044090125762422</p>
-    </div>
+    <table  class="tap-table">
+        <tbody>
+        <tr>
+            <td  id="yhmc"></td>
+            <td  id="yhbh"></td>
+            <td  id="jfrq"></td>
+            <td  id="sjh"></td>
+        </tr>
+        </tbody>
+    </table>
+<!--    <div class="table-top">-->
+<!--        <p id="yhmc">用户名称：吐鲁番恒久房地产开发有限公司</p>-->
+<!--        <p id="yhbh">用户编号：04192145310</p>-->
+<!--        <p id="jfrq">缴费日期：2018-12-05</p>-->
+<!--        <p id="sjh">收据号：5044090125762422</p>-->
+<!--    </div>-->
     <table class="datalist" summary="财政报表">
         <tbody>
         <tr>
@@ -49,11 +59,20 @@
             <td style="width: 80px" id="bcjy"></td>
         </tr>
     </table>
-    <div class="table-top">
+    <table  class="tap-table">
+        <tbody>
+        <tr>
+            <td  id="dysj"></td>
+            <td  id="skr"></td>
+            <td  id="kpr"></td>
+        </tr>
+        </tbody>
+    </table>
+   <!-- <div class="table-top">
         <p class="time" id="dysj">打印时间：</p>
         <p class="operater" id="skr">收款人：</p>
         <p class="shouyin" id="kpr">开票人：</p>
-    </div>
+    </div>-->
 </div>
 <script>
     function fixZero(value) {

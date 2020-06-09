@@ -33,6 +33,16 @@ td, th {
 
 }
 
+.tap-table{
+    border: 0;
+    font-size: 14px;
+}
+.tap-table td{
+    border: 0;
+    font-size: 14px;
+    text-align: left;
+}
+
 .table-top p {
     display: inline-block;
     white-space: nowrap;
@@ -63,8 +73,7 @@ h3 {
 }
 
 #print-box {
-    width: 635px;
-    margin: 0 auto;
+    width: 770px;
     font-size: 16px;
     color: #4f4f4f;
 }
