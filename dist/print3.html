@@ -8,7 +8,6 @@
     <title>万泉打印</title>
     <link rel="stylesheet" href="./print.css" >
     <link rel="stylesheet" href="./print.css" type="text/css" media="print">
-    <link rel="stylesheet" href="print.css">
 </head>
 <body>
 <div id="print-box">
@@ -16,66 +15,83 @@
     <table  class="tap-table">
         <tbody>
         <tr>
-            <td colspan="2"><table class="name-table">
-                    <tbody>
-                        <tr><td id="mc">用户名称:</td>
-                            <td id="yhmc"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-            <td  id="jfrq"></td>
-            <td  id="sjh"></td>
-        </tr>
-        <tr>
-            <td id="yhdz"  colspan="3"></td>
-            <td  id="yhbh"></td>
+            <td  id="hdbh">回单编号:136136712827981824</td>
+            <td  id="bjbh">表计编号:61011909290208</td>
+            <td  id="dysj">打印时间:2020-12-12 14:23:01</td>
         </tr>
         </tbody>
     </table>
-<!--    <div class="table-top">-->
-<!--        <p id="yhmc">用户名称：吐鲁番恒久房地产开发有限公司</p>-->
-<!--        <p id="yhbh">用户编号：04192145310</p>-->
-<!--        <p id="jfrq">缴费日期：2018-12-05</p>-->
-<!--        <p id="sjh">收据号：5044090125762422</p>-->
-<!--    </div>-->
-    <table class="datalist" summary="财政报表">
+    <table class="datalist" >
         <tbody>
         <tr>
-            <td colspan="2">用水性质</td>
-            <td style="width: 80px">上期读数</td>
-            <td style="width: 80px">本期读数</td>
-            <td style="width: 80px">实际水量</td>
-            <td style="width: 80px">单价</td>
-            <td style="width: 80px">金额</td>
-            <td style="width: 80px"></td>
+            <td  >用户姓名</td>
+            <td  colspan="2" id="yhxm">新疆金典优选食品有限责任公司</td>
+            <td  >本期读数</td>
+            <td   id="bqds"></td>
+            <td  >抄表日期</td>
+            <td   id="cbrq"></td>
         </tr>
         <tr>
-            <td colspan="2"  id="ysxz">预存水费</td>
-            <td style="width: 80px" id="sqds"></td>
-            <td style="width: 80px" id="bqds"></td>
-            <td style="width: 80px" id="sjsl"></td>
-            <td style="width: 80px" id="dj"></td>
-            <td style="width: 80px" id="je"></td>
-            <td style="width: 80px"></td>
+            <td  >用户电话</td>
+            <td  colspan="2" id="yhdh"></td>
+            <td  >上期读数</td>
+            <td   id="sqds"></td>
+            <td  >计费起始日期</td>
+            <td   id="jfqsrq"></td>
         </tr>
         <tr>
-            <td style="width: 80px">上期结余</td>
-            <td style="width: 80px" id="sqjy"></td>
-            <td style="width: 80px">本次应收</td>
-            <td style="width: 80px" id="bcys"></td>
-            <td style="width: 80px">本次实收</td>
-            <td style="width: 80px" id="bcss"></td>
-            <td style="width: 80px">本次结余</td>
-            <td style="width: 80px" id="bcjy"></td>
+            <td  >用户地址</td>
+            <td  colspan="4" id="yhdz">星星小区-1号楼-1单元--101卫生间</td>
+            <td  >计费结束日期</td>
+            <td   id="jfjsrq">2020-05-23</td>
         </tr>
+        <tr>
+            <td   colspan="2">费用名称</td>
+            <td   >单价</td>
+            <td  colspan="2">金额</td>
+            <td  >缴费日期</td>
+            <td   id="jfrq"></td>
+        </tr>
+        <tr>
+            <td  colspan="2">基础收费(1阶/2阶/3阶)</td>
+            <td   id="jcsf-dj">1.9/2.6/3.8</td>
+            <td  colspan="2"  id="jcsf-je">1290.55/1235.23/8523.32</td>
+            <td  >收款方式</td>
+            <td   id="skfs">预收</td>
+        </tr>
+        <tr>
+            <td colspan="2">污水处理费</td>
+            <td  id="wsclf-dj"></td>
+            <td  colspan="2"  id="wsclf-je"></td>
+            <td  >用水量(立方米)</td>
+            <td   id="ysl"></td>
+        </tr>
+        <tr>
+            <td  colspan="2">垃圾费</td>
+            <td   id="ljf-dj"></td>
+            <td   colspan="2"  id="ljf-je"></td>
+            <td  >上期余额</td>
+            <td   id="sqye"></td>
+        </tr>
+        <tr>
+            <td  colspan="2"></td>
+            <td    colspan="3" ></td>
+            <td  >本期余额</td>
+            <td   id="bqye"></td>
+        </tr>
+        <tr>
+            <td  colspan="2">实收金额(大写)</td>
+            <td  colspan="3" id="ssje1"></td>
+            <td  colspan="2" id="ssje2"></td>
+        </tr>
+        </tbody>
     </table>
     <table  class="tap-table bottom-table">
         <tbody>
         <tr>
-            <td  id="dysj"></td>
-            <td  id="skr"></td>
-            <td  id="kpr"></td>
+            <td  >单位盖章</td>
+            <td  id="czy">操作员:</td>
+            <td  id="syy">收银员:马丽</td>
         </tr>
         </tbody>
     </table>
@@ -213,6 +229,12 @@
     }
 </script>
 <script>
+    document.querySelector('#ssje1').innerHTML = convertCurrency(5623.23)
+    document.querySelector('#ssje2').innerHTML = '¥5623.23'
+    $("#print-box").jqprint({
+        importCSS: true
+    });
+
     document.querySelector('#yhmc').innerHTML = "吐鲁番城片区管理委员会" + getUrlParms('yhmc');//用户名称
     document.querySelector('#yhbh').innerHTML = "用户编号:61011909290002" + getUrlParms('yhbh');//用户编号
     document.querySelector('#jfrq').innerHTML = "缴费日期:2020-05-15" + getUrlParms('jfrq');//缴费日期
@@ -243,9 +265,7 @@
     document.querySelector('#kpr').innerHTML = "开票人:" + getUrlParms('kpr');//开票人
 
 
-    // $("#print-box").jqprint({
-    //     importCSS: true
-    // });
+
 </script>
 </body>
 </html>
