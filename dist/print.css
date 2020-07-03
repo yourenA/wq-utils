@@ -28,6 +28,9 @@
     white-space: nowrap;
 
 }
+.datalist td:not([id]), th:not([id]){
+    font-weight: bold;
+}
 
 .table-top {
     margin-bottom: 12px;
@@ -110,4 +113,7 @@ h3 {
 #sjh{
     width: 200px;
 
+}
+.small{
+    font-size: 12px;
 }
