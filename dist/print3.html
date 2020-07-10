@@ -53,7 +53,7 @@
             <td   id="jfrq"></td>
         </tr>
         <tr>
-            <td  colspan="2">商业有下水</td>
+            <td  colspan="2" id="fymc">商业有下水</td>
             <td   id="jcsf-dj">2.8</td>
             <td  colspan="2"  id="jcsf-je">15896.32</td>
             <td  >用水量<span class="small">(立方米)</span></td>
@@ -88,8 +88,8 @@
         <tbody>
         <tr>
             <td  >单位盖章</td>
-            <td  id="czy">操作员:</td>
-            <td  id="syy">收银员:马丽</td>
+            <td  id="czy"></td>
+            <td  id="syy"></td>
         </tr>
         </tbody>
     </table>
@@ -227,42 +227,37 @@
     }
 </script>
 <script>
-    document.querySelector('#ssje1').innerHTML = convertCurrency(5623.23)
-    document.querySelector('#ssje2').innerHTML = '¥5623.23'
+    document.querySelector('#hdbh').innerHTML = "回单编号:" + getUrlParms('hdbh');
+    document.querySelector('#bjbh').innerHTML = "表计编号:" + getUrlParms('bjbh');
+    document.querySelector('#dysj').innerHTML = "打印时间:" + GetDate(2);
+    document.querySelector('#yhxm').innerHTML = getUrlParms('yhxm');
+    document.querySelector('#yhdh').innerHTML = getUrlParms('yhdh');//用户电话
+    document.querySelector('#yhdz').innerHTML = getUrlParms('yhdz');//用户地址
+    document.querySelector('#bqds').innerHTML = getUrlParms('bqds');//本期读数
+    document.querySelector('#sqds').innerHTML = getUrlParms('sqds');//上期读数
+    document.querySelector('#cbrq').innerHTML = getUrlParms('cbrq');
+    document.querySelector('#jfqsrq').innerHTML = getUrlParms('jfqsrq');
+    document.querySelector('#jfjsrq').innerHTML = getUrlParms('jfjsrq');
+    document.querySelector('#jfrq').innerHTML = getUrlParms('jfrq');
+    document.querySelector('#ysl').innerHTML = getUrlParms('ysl');
+    document.querySelector('#sqye').innerHTML = getUrlParms('sqye');
+    document.querySelector('#bqye').innerHTML = getUrlParms('bqye');
+    document.querySelector('#skfs').innerHTML = getUrlParms('skfs');
+    document.querySelector('#fymc').innerHTML = getUrlParms('fymc');
+    document.querySelector('#jcsf-dj').innerHTML = getUrlParms('jcsf_dj');
+    document.querySelector('#jcsf-je').innerHTML = getUrlParms('jcsf_je');
+    document.querySelector('#wsclf-dj').innerHTML = getUrlParms('wsclf_dj');
+    document.querySelector('#wsclf-je').innerHTML = getUrlParms('wsclf_je');
+    if (getUrlParms('ssje')) {
+        document.querySelector('#ssje1').innerHTML = convertCurrency(getUrlParms('ssje'))
+        document.querySelector('#ssje2').innerHTML = "￥ " + getUrlParms('ssje2');
+    }
+    document.querySelector('#syy').innerHTML = "收银员:马燕"
+    document.querySelector('#czy').innerHTML = "操作员:" + getUrlParms('czy');
+
     $("#print-box").jqprint({
         importCSS: true
     });
-
-    document.querySelector('#yhmc').innerHTML = "吐鲁番城片区管理委员会" + getUrlParms('yhmc');//用户名称
-    document.querySelector('#yhbh').innerHTML = "用户编号:61011909290002" + getUrlParms('yhbh');//用户编号
-    document.querySelector('#jfrq').innerHTML = "缴费日期:2020-05-15" + getUrlParms('jfrq');//缴费日期
-    document.querySelector('#sjh').innerHTML = "收据号:132520155333824512" + getUrlParms('sjh');//收据号
-    document.querySelector('#yhdz').innerHTML = "用户地址:" + getUrlParms('yhdz');//用户地址
-    document.querySelector('#sqds').innerHTML = getUrlParms('sqds');//上期读数
-    document.querySelector('#bqds').innerHTML = getUrlParms('bqds');//本期读数
-    document.querySelector('#sjsl').innerHTML = getUrlParms('sjsl');//实际水量
-    document.querySelector('#dj').innerHTML = getUrlParms('dj');//单价
-    document.querySelector('#je').innerHTML = getUrlParms('je');//金额
-    document.querySelector('#ysxz').innerHTML = getUrlParms('ysxz');//用水性质
-    if (getUrlParms('sqjy')) {
-        document.querySelector('#sqjy').innerHTML = "￥ " + getUrlParms('sqjy');//上次结余
-    }
-
-    if (getUrlParms('bcys')) {
-        document.querySelector('#bcys').innerHTML = "￥ " + getUrlParms('bcys');//本次应收
-    }
-    if (getUrlParms('bcss')) {
-        document.querySelector('#bcss').innerHTML = "￥ " + getUrlParms('bcss');//本次实收
-    }
-    if (getUrlParms('bcjy')) {
-        document.querySelector('#bcjy').innerHTML = "￥ " + getUrlParms('bcjy');//本次结余
-    }
-
-    document.querySelector('#dysj').innerHTML = "打印时间:" + GetDate(2);
-    document.querySelector('#skr').innerHTML = "收款人:马燕"
-    document.querySelector('#kpr').innerHTML = "开票人:" + getUrlParms('kpr');//开票人
-
-
 
 </script>
 </body>
