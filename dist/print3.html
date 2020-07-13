@@ -53,9 +53,9 @@
             <td   id="jfrq"></td>
         </tr>
         <tr>
-            <td  colspan="2" id="fymc">商业有下水</td>
-            <td   id="jcsf-dj">2.8</td>
-            <td  colspan="2"  id="jcsf-je">15896.32</td>
+            <td  colspan="2" id="fymc"></td>
+            <td   id="jcsf-dj"></td>
+            <td  colspan="2"  id="jcsf-je"></td>
             <td  >用水量<span class="small">(立方米)</span></td>
             <td   id="ysl"></td>
         </tr>
@@ -250,9 +250,9 @@
     document.querySelector('#wsclf-je').innerHTML = getUrlParms('wsclf_je');
     if (getUrlParms('ssje')) {
         document.querySelector('#ssje1').innerHTML = convertCurrency(getUrlParms('ssje'))
-        document.querySelector('#ssje2').innerHTML = "￥ " + getUrlParms('ssje2');
+        document.querySelector('#ssje2').innerHTML = "￥ " + getUrlParms('ssje');
     }
-    document.querySelector('#syy').innerHTML = "收银员:马燕"
+    document.querySelector('#syy').innerHTML = "收银员:" + getUrlParms('syy');
     document.querySelector('#czy').innerHTML = "操作员:" + getUrlParms('czy');
 
     $("#print-box").jqprint({
