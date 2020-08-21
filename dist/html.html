@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
+    <style>
+        *{
+            margin: 0 ;
+            padding: 0;
+        }
+        div{
+            padding: 0 5px;
+            height: 80px;
+            width: 160px;
+            text-align: center;
+            overflow: hidden;
+        }
+        p{
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="custom-print">
+    <p>智能RTU</p>
+    <p >产品码:12.23.56</p>
+    <p>序列号:0000000236</p>
+    <svg id="code128"></svg>
+</div>
+<div class="custom-print">
+    <p>智能RTU</p>
+    <p >产品码:12.23.56</p>
+    <p>序列号:0000000236</p>
+    <svg id="code128"></svg>
+</div>
+<div class="custom-print">
+    <p>智能RTU</p>
+    <p >产品码:12.23.56</p>
+    <p>序列号:0000000236</p>
+    <svg id="code128"></svg>
+</div>
+<script>
+    JsBarcode("#code128", "0000000236", {
+        format: "CODE128",
+        displayValue: false,
+        width: 1.1,
+        height: 30,
+        margin: 0,
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    function onScanInput(str){
+        console.log('得到的结果',str)
+    }
+
+    window.onload = function(e) {
+        var codeString = "";
+        //定时器每隔1000ms 清空codeString
+        var scanTimeer = setInterval(function() {
+                var now = new Date().getTime();
+                if (now - lastTime > 5000) {
+                    codeString = "";
+                }
+            },
+            5000);
+
+        var lastTime;
+        var caseFormat = false;
+        document.onkeydown = function(e) {
+            var nextTime = new Date().getTime();
+            var code = e.which;
+            //shift
+            console.log('code',code)
+            if (code == 16) {
+                caseFormat = true;
+            } else {
+                if (caseFormat) {
+                    if (code >= 65 && code <= 90) {
+                        //转小写
+                        code = code + 32;
+                    } else if (code >= 97 && code <= 122) {
+                        //转大写
+                        code = code - 32;
+                    }
+                    caseFormat = false;
+                }
+                var char = String.fromCharCode(code);
+
+                if (codeString == "") {
+                    codeString += char;
+                } else if (nextTime - lastTime <= 30) {
+                    codeString += char;
+                }
+            }
+            console.log(codeString);
+            lastTime = nextTime;
+        };
+
+        $(this).keydown(function(e) {
+            if (e.which == 13) {
+                console.log('codeString',codeString)
+                onScanInput(codeString.substring(0, codeString.length)); //do something
+                codeString = ""; //回车输入后清空
+            }
+        })
+    };
+</script>
+</body>
+</html>
