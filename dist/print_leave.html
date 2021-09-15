@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/"/>
+    <title>请假单打印</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="http://www.jq22.com/demo/dayin/jquery.jqprint-0.3.js"></script>
+    <link rel="stylesheet" href="./print_leave.css" >
+    <link rel="stylesheet" href="./print_leave.css" type="text/css" media="print">
+</head>
+<body>
+<div id="print-box" style="margin: 10px auto">
+    <h3 style="font-size: 30px">吐鲁番市万泉水务有限公司请假单</h3>
+    <table class="datalist" summary="财政报表" style="margin-top: 20px">
+        <tbody>
+        <tr>
+            <td style="width:  90px">申请人</td>
+            <td colspan="2" id="sqr"></td>
+            <td style="width:  90px">请假类型</td>
+            <td colspan="2" id="qjlx"></td>
+            <td style="width: 90px">申请时间</td>
+            <td colspan="2" id="sqsj"></td>
+        </tr>
+        <tr>
+            <td>开始时间</td>
+            <td colspan="2" id="kssj"></td>
+            <td>结束时间</td>
+            <td colspan="2" id="jssj"></td>
+            <td>请假时长</td>
+            <td colspan="2" id="qjsc"></td>
+        </tr>
+        <tr>
+            <td >请假事由</td>
+            <td colspan="8" id="qjsy" style="text-align: center;text-indent: 2em" >
+            </td>
+        </tr>
+        <tr>
+            <td >状态</td>
+            <td colspan="8" id="zt" style="text-align: center;text-indent: 2em" >
+
+            </td>
+        </tr>
+    </table>
+</div>
+<script>
+  function fixZero(value) {
+    if (Number(value) < 10) {
+      return '0' + value;
+    } else {
+      return value;
+    }
+  }
+
+
+  //获取地址栏参数，name:参数名称
+  function getUrlParms(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURIComponent(r[2]);
+    return '';
+  }
+
+</script>
+<script>
+  document.querySelector('#sqr').innerHTML = getUrlParms('sqr');//用户编号
+  document.querySelector('#qjlx').innerHTML = getUrlParms('qjlx');//用户姓名
+  document.querySelector('#sqsj').innerHTML = getUrlParms('sqsj');//用户电话
+  document.querySelector('#kssj').innerHTML = getUrlParms('kssj');//表计编号
+  document.querySelector('#jssj').innerHTML = getUrlParms('jssj');//水价类型
+  document.querySelector('#qjsc').innerHTML = getUrlParms('qjsc');//结算日期
+  document.querySelector('#qjsy').innerHTML = getUrlParms('qjsy');//上期读数
+  document.querySelector('#zt').innerHTML = getUrlParms('zt');//本期读数
+
+  console.log(JSON.parse(getUrlParms('replicators')));
+  if(getUrlParms('reviewers')){
+    console.log(JSON.parse(getUrlParms('reviewers')));
+    let reviewers=JSON.parse(getUrlParms('reviewers'))
+    for(let i=0;i<reviewers.length;i++){
+      let tr=document.createElement("tr"); //创建一个tr节点
+      tr.innerHTML=`  </tr>
+        <tr>
+            <td>审批人</td>
+            <td colspan="2"  style="text-align: left">${reviewers[i].spr}</td>
+            <td>审批时间</td>
+            <td colspan="2"  style="text-align: left">${reviewers[i].spsj}</td>
+            <td>备注</td>
+            <td colspan="2" style="text-align: left">${reviewers[i].bz}</td>
+        </tr>`
+      document.querySelector('.datalist tbody').appendChild(tr)
+    }
+  }
+  if(getUrlParms('replicators')){
+    console.log(JSON.parse(getUrlParms('replicators')));
+    let replicators=JSON.parse(getUrlParms('replicators'))
+    for(let i=0;i<replicators.length;i++){
+      let tr=document.createElement("tr"); //创建一个tr节点
+      tr.innerHTML=`  </tr>
+        <tr>
+            <td>抄送人</td>
+            <td colspan="2" style="text-align: left">${replicators[i].csr}</td>
+            <td>确认时间</td>
+            <td colspan="5" style="text-align: left">${replicators[i].qrsj}</td>
+        </tr>`
+      document.querySelector('.datalist tbody').appendChild(tr)
+    }
+  }
+  $("#print-box").jqprint({
+      importCSS: true
+  });
+</script>
+</body>
+</html>
